@@ -1,0 +1,7 @@
+[Default]
+unitId = test_unit_1
+apiUri = https://parkingdataapifunction.azurewebsites.net/api/parkingData?code=BxN4OgPja--m-pNTZ5fZSj-dloeiY2SI497hlxZIs_BpAzFuJLiFDw==
+
+[PyTesseract]
+pyTesseractpath = C:\Program Files\Tesseract-OCR\tesseract.exe
+pyTesseractConfig = --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
