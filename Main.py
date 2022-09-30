@@ -2,6 +2,7 @@ import os
 import cv2
 import configparser
 import requests
+import subprocess
 from VehicleImagePlateAnalyzer import VehicleImagePlateAnalyzer
 
 config = configparser.ConfigParser()
@@ -17,12 +18,11 @@ print("Parking Spot Analyzer. Unit Id : "+unitId)
 
 vehicleImagePlateAnalyzer = VehicleImagePlateAnalyzer(pyTesseractpath, pyTesseractConfig)
 
-# todo 
-# open camera module and click image and save to Images folder
+# open camera module and click image and save to Images folder as image.jpeg
+img_path = "Images/image.jpeg"
+subprocess.run(["libcamera-jpeg","-o",img_path])
 
-# read image in folder Images
-img_path = "Images"
-img_path = os.path.join(img_path, os.listdir(img_path)[3])  
+# read image in folder Images  
 img = cv2.imread(img_path)
 print("processing image : "+img_path)
 
@@ -42,6 +42,6 @@ response = requests.post(apiUri, json=payload)
 print("received response : ")
 print(response)
 
-# todo
 # delete image after processing
-
+subprocess.run(["rm",img_path])
+print("deleted image : "+img_path)
